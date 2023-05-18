@@ -1,7 +1,6 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 	
@@ -14,7 +13,10 @@ public class Main {
 static void addItems(int id) {
 		
 		String [] pro = {"Fruits","Vegetables","Cool Drinks","Dairy Product","Chips"};
-		
+		al = new ArrayList<>();
+		al3 = new ArrayList<>();
+		count = 0;
+		total = 0;
 		boolean is = true;
 		while(is) {
 		for(int i=0;i<pro.length;i++) {
@@ -62,8 +64,7 @@ static void addItems(int id) {
 		System.out.println("total no of items is "+ count);
 		System.out.println("Total amount "+total);
 		GroceryList gl = new GroceryList();
-		gl.addMore( id,count,total, al2);
-		
+		gl.addMore(id,count,total, al,al3);
 		
 	}
 	static void addItems(UserDetails ud) {
@@ -71,8 +72,8 @@ static void addItems(int id) {
 		String [] pro = {"Fruits","Vegetables","Cool Drinks","Dairy Product","Chips"};
 		
 		boolean is = true;
-		al.removeAll(al);
-		al3.removeAll(al3);
+		al = new ArrayList<>();
+		al3 = new ArrayList<>();
 		count = 0;
 		total = 0;
 		while(is) {
@@ -121,7 +122,7 @@ static void addItems(int id) {
 		System.out.println("total no of items is "+ count);
 		System.out.println("Total amount "+total);
 		GroceryList gl = new GroceryList();
-		gl.addUser(ud, count,total, al);
+		gl.addUser(ud, count,total, al,al3);
 		
 		
 	}
@@ -289,13 +290,14 @@ static void addItems(int id) {
 				System.out.println("2.Exist user");
 				int user = in.nextInt();
 				if(user==1) {
-				System.out.println("user details  // Name  // Mobile No // Address");
+				System.out.println("user details  new ID// Name  // Mobile No // Address");
+				int id = in.nextInt();
 				in.nextLine();
 				String name = in.nextLine();
 				long mobileNo = in.nextLong();
 				in.nextLine();
 				String add = in.nextLine();
-				UserDetails us = new UserDetails(name,mobileNo,add);
+				UserDetails us = new UserDetails(name,mobileNo,add,id);
 				addItems(us);
 				}
 				else {
